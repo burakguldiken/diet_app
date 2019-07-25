@@ -1,0 +1,37 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+        <title>Yeni Diyet Ekle</title>
+</head>
+    <body>
+        <div class="panel panel-default">
+            <div class="panel panel-heading">
+                <h3>Yeni Diyet Ekle</h3>
+            </div>
+            <div class="panel panel-body">
+                @using (Html.BeginForm())
+                {
+                    <div class="form-group">
+                        <label>Öğün</label>
+                        @Html.TextBox("Ogun",null, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label>Açıklama</label>
+                        @Html.TextArea("Aciklama", null, new { @class = "form-control" })
+                    </div>
+                    <input type="submit" value="Ekle" class="btn btn-success"/>
+                    @Html.ActionLink("Diyet Listesi","Index",null,new { @class = "btn btn-default" })
+                }
+            </div>
+        </div>
+    </body>
+</html>

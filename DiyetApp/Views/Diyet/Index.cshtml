@@ -1,0 +1,74 @@
+﻿@model IEnumerable<DiyetApp.Models.Diyet>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <!--<link href="~/Content/bootstrap.min.css" rel="stylesheet" />-->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link  href = "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"  rel = "stylesheet">
+    <title>Diyet Program Listesi</title>
+</head>
+    <body>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Diyet Program Listesi</h3>
+            </div>
+            <div class="panel-body">
+                @Html.ActionLink("Yeni Ekle","Ekle",null,new { @class = "btn btn-primary"})
+                <hr/>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width:3%;"></th>
+                            <th style="width:30%">Öğün</th>
+                            <th style="width:55%">Öğün İçeriği</th>
+                            <th style="width:10%">Tarih</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var diyet in Model)
+                        {
+                            if (diyet.Tamamlandimi)
+                            {
+                                <tr class="success">
+                                    <td>
+                                        @if (diyet.Tamamlandimi)
+                                        {
+                                            <span class="glyphicon glyphicon-check"></span>
+                                        } else
+                                        {
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        }
+
+                                    </td>
+                                    <td>@diyet.Ogun</td>
+                                    <td>@diyet.Aciklama</td>
+                                    <td>@diyet.Tarih.ToShortDateString()</td>
+                                </tr>
+                            } else {
+                                <tr class="warning">
+                                    <td>
+                                        @if (diyet.Tamamlandimi)
+                                        {
+                                        <span class="glyphicon glyphicon-check"></span>
+                                        } else {
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                        }
+                                    </td>
+                                    <td>@diyet.Ogun</td>
+                                    <td>@diyet.Aciklama</td>
+                                    <td>@diyet.Tarih.ToShortDateString()</td>
+                                </tr>
+                            }
+                         }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
